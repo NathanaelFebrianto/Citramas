@@ -1,3 +1,8 @@
+<!--
+	Created by : Nathanael
+	7/4/2015
+-->
+
 @extends('master')
 
 @section('content')
