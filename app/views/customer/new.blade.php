@@ -20,7 +20,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="customerId">Customer Id</label>
 					  <div class="col-md-4">
-					    <input name="customerId" type="text" value = "{{ $id }}" class="form-control input-md" readonly>
+					    <input name="customerId" type="text" placeholder="Input Customer ID" class="form-control input-md" required="">
 					  </div>
 					  <div class="col-md-4 text-left">
             				<?php echo $errors->first('customerId'); ?>

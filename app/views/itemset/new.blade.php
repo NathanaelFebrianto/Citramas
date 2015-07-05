@@ -15,9 +15,8 @@
 				<fieldset>
 					<!-- Item Set ID -->
 					<div class="form-group">
-					  <label class="col-md-4 control-label" for="itemSetId">Item Set Id</label>
 					  <div class="col-md-4">
-					    <input name="itemSetId" type="text" value = "{{ $id }}" class="form-control input-md" readonly>
+					    <input name="itemSetId" type="hidden" value = "{{ $id }}" class="form-control input-md" readonly>
 					  </div>
 					  <div class="col-md-4 text-left">
             				<?php echo $errors->first('itemSetId'); ?>

@@ -15,9 +15,8 @@
 				<fieldset>
 					<!-- Customer ID -->
 					<div class="form-group">
-					  <label class="col-md-4 control-label" for="regionId">Region Id</label>
 					  <div class="col-md-4">
-					    <input name="regionId" type="text" value = "{{ $id }}" class="form-control input-md" readonly>
+					    <input type="hidden" name="regionId" type="text" value={{$id}} class="form-control input-md" readonly>
 					  </div>
 					  <div class="col-md-4 text-left">
             				<?php echo $errors->first('regionId'); ?>

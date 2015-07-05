@@ -15,9 +15,9 @@
 				<fieldset>
 					<!-- User ID -->
 					<div class="form-group">
-					  <label class="col-md-4 control-label" for="userId">User Id</label>
+					  <label class="col-md-4 control-label"  for="userId">User Id</label>
 					  <div class="col-md-4">
-					    <input name="userId" type="text" value = "{{ $id }}" class="form-control input-md" readonly>
+					    <input name="userId" type="text" placeholder="Input User ID" class="form-control input-md" required="">
 					  </div>
 					  <div class="col-md-4 text-left">
             				<?php echo $errors->first('userId'); ?>

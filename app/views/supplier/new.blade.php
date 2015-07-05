@@ -29,7 +29,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="supplierId">Supplier Id</label>
 					  <div class="col-md-4">
-					    <input name="supplierId" type="text" value = "{{ $id }}" class="form-control input-md" readonly>
+					    <input name="supplierId" type="text" placeholder="Input Supplier ID" required="" class="form-control input-md">
 					  </div>
 					  <div class="col-md-4 text-left">
             				<?php echo $errors->first('supplierId'); ?>

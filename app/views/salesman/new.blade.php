@@ -21,7 +21,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="salesId">Salesman Id</label>
 					  <div class="col-md-4">
-					    <input name="salesId" type="text" value = "{{ $id }}" class="form-control input-md" readonly>
+					    <input name="salesId" type="text" placeholder="Input Salesman ID" required="" class="form-control input-md">
 					  </div>
 					  <div class="col-md-4 text-left">
             				<?php echo $errors->first('salesId'); ?>
