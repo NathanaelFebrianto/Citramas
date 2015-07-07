@@ -25,10 +25,12 @@
 							<th>Warehouse Fax</th>
 			                <th>Warehouse Email</th>
 							<th>Warehouse PIC</th>
+							<th>Action</th>
 			            </tr>
 			        </thead>
 			 
 			        <tbody>
+			        	<!-- looping for warehouse start here -->
 			        	@foreach ($warehouses as $warehouse)
 						<tr>
 							<td>{{ $warehouse->warehouseID }}</td>
@@ -42,9 +44,25 @@
 							<td>{{ $warehouse->warehouseEmail}}</td>
 							<td>{{ $warehouse->warehousePIC}}</td>
 
+							<td>
+
+
+								<!-- action delete start here -->
+								{{ Form::open(array('style' => 'display:inline;' , 'route' => array('warehouse.destroy' , $warehouse->warehouseID), 'method' => 'DELETE')) }}
+
+								<button href="" onClick="return confirm('Are you sure want to delete this warehouse?')" class="btn btn-danger btn-info">
+									<span class="glyphicon glyphicon-remove"></span>Delete
+								</button>
+
+								{{ Form::close() }}
+								<!-- action delete end here -->
+
+							</td>
+
 						</tr>
 						@endforeach
 						
+						<!-- looping for warehouse end here -->
 			        </tbody>
 				</table>
 				</div><!--End of table-->

@@ -45,8 +45,8 @@ class AreaController extends \BaseController {
 	public function store()
 	{
 		//
-		$rules = array("areaId" 	=> "required",
-					   "areaName" 	=> "required");
+		$rules = array("areaId" 	=> "required|unique:msarea,areaID|max:12",
+					   "areaName" 	=> "required|unique:msarea,areaName");
 
 	    $validator = Validator::make(Input::all(), $rules);
 
@@ -58,7 +58,7 @@ class AreaController extends \BaseController {
 		//
 		$area = new Area;
 		$area->areaID = Input::get('areaId');
-		$area->areaName = Input::get('areaName');
+		$area->areaName = strtoupper(Input::get('areaName'));
 		$area->save();
 		
 		return Redirect::to('/area');
@@ -110,7 +110,13 @@ class AreaController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//select query
+		$area = Area::find($id);
+		//delete data
+		$area->delete();
+		//redirect
+		return Redirect::to('/area');
+
 	}
 
 

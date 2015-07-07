@@ -32,10 +32,12 @@
 						   	<th>Salesman Position</th>
 						   	<th>Salesman Status</th>
 						   	<th>Salesman Children</th>
+			            	<th>Action</th>
 			            </tr>
 			        </thead>
 			 
 			        <tbody>
+			        	<!-- looping for salesman start here -->
 			        	@foreach ($salesmans as $salesman)
 						<tr>
 							<td>{{ $salesman->salesID }}</td>
@@ -55,9 +57,23 @@
 							<td>{{ $salesman->salesPosition }}</td>
 							<td>{{ $salesman->salesStatus }}</td>
 							<td>{{ $salesman->salesChildren }}</td>
+							<td>
+
+
+								<!-- action delete start here -->
+								{{ Form::open(array('style' => 'display:inline;' , 'route' => array('salesman.destroy' , $salesman->salesID), 'method' => 'DELETE')) }}
+
+								<button href="" onClick="return confirm('Are you sure want to delete this salesman?')" class="btn btn-danger btn-info">
+									<span class="glyphicon glyphicon-remove"></span>Delete
+								</button>
+
+								{{ Form::close() }}
+								<!-- action delete end here -->
+
+							</td>
 						</tr>
 						@endforeach
-						
+						<!-- looping for salesman end here -->
 			        </tbody>
 				</table>
 				</div><!--End of table-->

@@ -10,6 +10,7 @@ class Customer extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'mscustomer';
+	protected $primaryKey = 'customerID';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

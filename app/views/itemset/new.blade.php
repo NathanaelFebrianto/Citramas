@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <hr>
                 <h2 class="intro-text text-center">
-                    <strong>Add Item</strong>
+                    <strong>Add Item Set</strong>
                 </h2>
                 <hr>
             <h4 class="intro-text text-center">
@@ -15,8 +15,9 @@
 				<fieldset>
 					<!-- Item Set ID -->
 					<div class="form-group">
+					  <label class="col-md-4 control-label"  for="itemSetId">Item Set Id</label>
 					  <div class="col-md-4">
-					    <input name="itemSetId" type="hidden" value = "{{ $id }}" class="form-control input-md" readonly>
+					    <input id = "itemSetId" name="itemSetId" type="text" placeholder = "Input Item Set Id" class="form-control input-md" required = "">
 					  </div>
 					  <div class="col-md-4 text-left">
             				<?php echo $errors->first('itemSetId'); ?>

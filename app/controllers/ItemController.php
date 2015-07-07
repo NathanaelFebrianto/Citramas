@@ -24,9 +24,10 @@ class ItemController extends \BaseController {
 	public function create()
 	{
 		//
-
+		//generate new id 
 		$newId = Item::generateId();
 
+		//return view
 		return View::make('item.new' , ['id' => $newId]);
 	}
 
@@ -38,8 +39,8 @@ class ItemController extends \BaseController {
 	 */
 	public function store()
 	{
-
-		$rules = array("itemId" 	=> "required",
+		//rule dari setiap input yang akan di validasi
+		$rules = array("itemId" 	=> "required|unique:msitem,itemID|max:12",
 					   "itemBrand" 	=> "required",
 					   "itemType"  	=> "required",
 					   "itemDesc"=> "required",
@@ -99,6 +100,7 @@ class ItemController extends \BaseController {
 	public function update($id)
 	{
 		//
+
 	}
 
 
@@ -110,7 +112,13 @@ class ItemController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//select query item
+		$item = Item::find($id);
+		//delete item
+		$item->delete();
+
+		//redirect
+		return Redirect::to('/item');
 	}
 
 

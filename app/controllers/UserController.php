@@ -38,24 +38,26 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
-		$rules = array("userId" 	=> "required",
+		//rules untuk validasi user
+		$rules = array("userId" 	=> "required|unique:msuser,userID|max:12",
 					   "userName" 	=> "required|min:3|max:50",
 					   "password"  	=> "required|min:3|confirmed",
 					   "password_confirmation" => "required|min:3"
 			);
 
+
+		//check validasi
 	    $validator = Validator::make(Input::all(), $rules);
 
+
+	    //jika validasi fail
 	    if ($validator->fails())
 	    {
 	        return Redirect::to('/user/create')->withErrors($validator);
 	    }
 
-		//
+		// make new data of user
 		$user = new User;
-
-
 
 		$user->userID = Input::get('userId');
 		$user->userName = Input::get('userName');
@@ -111,7 +113,13 @@ class UserController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//select query
+		$user = User::find($id);
+		//delete user
+		$user->delete();
+
+		//redirect
+		return Redirect::to('/user');
 	}
 
 }

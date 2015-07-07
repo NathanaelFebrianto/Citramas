@@ -20,7 +20,7 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="warehouseId">Warehouse Id</label>
 					  <div class="col-md-4">
-					    <input name="warehouseId" type="text" class="form-control input-md" placeholder="Input Warehouse ID" required="">
+					    <input id = "warehouseId" name="warehouseId" id = "warehouseId" type="text" class="form-control input-md" placeholder="Input Warehouse ID" required="">
 					  </div>
 					  <div class="col-md-4 text-left">
             				<?php echo $errors->first('warehouseId'); ?>

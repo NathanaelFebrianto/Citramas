@@ -41,7 +41,7 @@ class WarehouseController extends \BaseController {
 	{
 		//
 
-		$rules = array("warehouseId" 	=> "required",
+		$rules = array("warehouseId" 	=> "required|unique:mswarehouse,warehouseID|max:12",
 					   "warehouseName" 	=> "required",
 					   "firstAddress" 	=> "required",
 					   "area"			=> "required",
@@ -124,7 +124,12 @@ class WarehouseController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//select query
+		$warehouse = Warehouse::find($id);
+		//delete data
+		$warehouse->delete();
+		//redirect
+		return Redirect::to('/warehouse');
 	}
 
 

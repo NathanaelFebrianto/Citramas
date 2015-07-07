@@ -40,9 +40,9 @@ class SalesmanController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		//rule untuk validasi salesman
 
-		$rules = array("salesId" 		=> "required",
+		$rules = array("salesId" 		=> "required|unique:mssalesman,salesID|max:12",
 					   "salesName" 		=> "required",
 					   "firstAddress" 	=> "required",
 					   "secondAddress"	=> "required",
@@ -53,7 +53,7 @@ class SalesmanController extends \BaseController {
 					   "salesMobile2"	=> "required|numeric",
 					   "salesPinBB"		=> "required",
 					   "salesEmail" 	=> "required|email",
-					   "poBirth" 		=> "required|date",
+					   "poBirth" 		=> "required",
 					   "doBirth" 		=> "required|date",
 					   "salesReligion"  => "required",
 					   "salesPosition"  => "required",
@@ -67,7 +67,7 @@ class SalesmanController extends \BaseController {
 	        return Redirect::to('/salesman/create')->withErrors($validator);
 	    }
 
-		//
+		//buat instance baru / data baru dari salesman
 		$salesman = new Salesman;
 
 
@@ -140,7 +140,13 @@ class SalesmanController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//select query
+		$sales = Salesman::find($id);
+		//delete salesman
+		$sales->delete();
+
+		//redirect
+		return Redirect::to('/salesman');
 	}
 
 

@@ -26,10 +26,12 @@
 						   	<th>Supplier Mobile</th>	
 						   	<th>Area Name</th>
 						   	<th>Region Name</th>
+			            	<th>Action</th>
 			            </tr>
 			        </thead>
 			 
 			        <tbody>
+			        	<!-- looping for supplier start here -->
 			        	@foreach ($suppliers as $supplier)
 						<tr>
 							<td>{{ $supplier->supplierID }}</td>
@@ -43,8 +45,22 @@
 							<td>{{ $supplier->supplierMobile }}</td>
 							<td>{{ $supplier->area->areaName }}</td>
 							<td>{{ $supplier->region->regionName }}</td>
+							<td>
+
+								<!-- action delete start here -->
+								{{ Form::open(array('style' => 'display:inline;' , 'route' => array('supplier.destroy' , $supplier->supplierID), 'method' => 'DELETE')) }}
+
+								<button href="" onClick="return confirm('Are you sure want to delete this supplier?')" class="btn btn-danger btn-info">
+									<span class="glyphicon glyphicon-remove"></span>Delete
+								</button>
+
+								{{ Form::close() }}
+								<!-- action delete end here -->
+
+							</td>
 						</tr>
 						@endforeach
+						<!-- looping for supplier end here  -->
 						
 			        </tbody>
 				</table>

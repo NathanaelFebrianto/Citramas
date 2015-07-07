@@ -15,8 +15,9 @@
 				<fieldset>
 					<!-- Customer ID -->
 					<div class="form-group">
+					  <label class="col-md-4 control-label"  for="areaId">Area Id</label>
 					  <div class="col-md-4">
-					    <input name="areaId" type="hidden" value = "{{ $id }}" class="form-control input-md" readonly>
+					    <input id = "areaId" required = "" placeholder = "Input Area Id" name="areaId" type="text" required = "" class="form-control input-md">
 					  </div>
 					  <div class="col-md-4 text-left">
             				<?php echo $errors->first('areaId'); ?>
@@ -44,7 +45,7 @@
 					</div>
 
 				</fieldset>
-			</form>
+			{{ Form::close() }}
 			</h4>
 			</div>
     	</div>

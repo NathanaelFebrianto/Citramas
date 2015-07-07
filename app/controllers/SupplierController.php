@@ -39,8 +39,8 @@ class SupplierController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
-		$rules = array("supplierId" 	=> "required",
+		//rule untuk validasi supplier 
+		$rules = array("supplierId" 	=> "required|unique:mssupplier,supplierID|max:12",
 					   "supplierName" 	=> "required",
 					   "firstAddress" 	=> "required",
 					   "secondAddress"	=> "required",
@@ -59,7 +59,7 @@ class SupplierController extends \BaseController {
 	        return Redirect::to('/supplier/create')->withErrors($validator);
 	    }
 
-		//
+		//buat new instance dari supplier / data baru
 		$supplier = new Supplier;
 
 
@@ -127,6 +127,14 @@ class SupplierController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+
+		//select query
+		$supplier = Supplier::find($id);
+		//delete supplier
+		$supplier->delete();
+
+		//redirect
+		return Redirect::to('/supplier');
 	}
 
 

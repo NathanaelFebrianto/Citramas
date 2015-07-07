@@ -35,10 +35,12 @@
 			                <th>Customer Phone</th>
 			                <th>Customer Mobile</th>
 			                <th>Customer PIN BB</th>
+			                <th>Action</th>
 			            </tr>
 			        </thead>
 			 
 			        <tbody>
+			        	<!-- looping for customer start here -->
 			        	@foreach ($customers as $customer)
 						<tr>
 							<td>{{ $customer->customerID }}</td>
@@ -61,6 +63,21 @@
 							<td>{{ $customer->customerPhoneHome }}</td>
 							<td>{{ $customer->customerMobile }}</td>
 							<td>{{ $customer->customerPinBB }}</td>
+							
+							<td>
+
+
+								<!-- action delete start here -->
+								{{ Form::open(array('style' => 'display:inline;' , 'route' => array('customer.destroy' , $customer->customerID), 'method' => 'DELETE')) }}
+
+								<button href="" onClick="return confirm('Are you sure want to delete this customer?')" class="btn btn-danger btn-info">
+									<span class="glyphicon glyphicon-remove"></span>Delete
+								</button>
+
+								{{ Form::close() }}
+								<!-- action delete end here -->
+
+							</td>
 						</tr>
 						@endforeach
 						
@@ -68,7 +85,7 @@
 				</table>
 				</div><!--End of table-->
 				<h3 class="intro-text text-center">
-					<a href="{{ Request::url() }}/create" class="btn btn-primary btn-info"><span class=glyphicon glyphicon-plus></span> Add New Customer</a>
+					<a href="{{ Request::url() }}/create" class="btn btn-primary btn-info"><span class="glyphicon glyphicon-plus"></span> Add New Customer</a>
             	</h3>
             </div>
         </div>

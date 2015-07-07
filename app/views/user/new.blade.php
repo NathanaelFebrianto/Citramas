@@ -15,9 +15,10 @@
 				<fieldset>
 					<!-- User ID -->
 					<div class="form-group">
+
 					  <label class="col-md-4 control-label"  for="userId">User Id</label>
 					  <div class="col-md-4">
-					    <input name="userId" type="text" placeholder="Input User ID" class="form-control input-md" required="">
+					    <input id = "userId" name="userId" type="text" placeholder = "Input User Id" required class="form-control input-md">
 					  </div>
 					  <div class="col-md-4 text-left">
             				<?php echo $errors->first('userId'); ?>

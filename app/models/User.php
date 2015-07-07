@@ -20,6 +20,8 @@ class User extends Eloquent{
 	 */
 	protected $hidden = array('password');
 
+	protected $primaryKey = 'userID';
+
 
 	public static function generateId(){
 		$user = User::orderBy('userID' , 'DESC')->get()->first();

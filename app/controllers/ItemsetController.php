@@ -45,7 +45,7 @@ class ItemsetController extends \BaseController {
 	{
 		//
 
-		$rules = array("itemSetId" 	=> "required",
+		$rules = array("itemSetId" 	=> "required|unique:msitemset,itemSetID|max:12",
 					   "item" 	=> "required",
 					 	"itemQty"  	=> "required|integer");
 
@@ -112,7 +112,13 @@ class ItemsetController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//select query
+		$itemset = Itemset::find($id);
+		//delete
+		$itemset->delete();
+
+		//redirect
+		return Redirect::to('/itemset');
 	}
 
 

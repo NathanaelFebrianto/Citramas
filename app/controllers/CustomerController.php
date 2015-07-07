@@ -43,10 +43,10 @@ class CustomerController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
-		$rules = array("customerId" 	=> "required",
-					   "firstAddress" 	=> "required",
-					   "secondAddress"	=> "required",
+		//rule untuk validasi customer
+		$rules = array("customerId" 		=> "required|unique:mscustomer,customerID|max:12",
+					   "firstAddress" 		=> "required",
+					   "secondAddress"		=> "required",
 					   "thirdAddress" 	=> "required",
 					   "fourthAddress"	=> "required",
 					   "area"  			=> "required",
@@ -55,7 +55,7 @@ class CustomerController extends \BaseController {
 					   "customerFax" 	=> "required|numeric",
 					   "customerEmail" 	=> "required|email",
 					   "customerContact"=> "required",
-					   "poBirth" 		=> "required|date",
+					   "poBirth" 		=> "required",
 					   "doBirth" 		=> "required|date",
 					   "customerReligion" => "required",
 					   "customerPosition" => "required",
@@ -65,14 +65,16 @@ class CustomerController extends \BaseController {
 					   "customerMobile" => "required|numeric",
 					   "customerPinBB" => "required");
 
+		//check validasi
 	    $validator = Validator::make(Input::all(), $rules);
 
+	    //jika validasi fail
 	    if ($validator->fails())
 	    {
 	        return Redirect::to('/customer/create')->withErrors($validator);
 	    }
 
-		//
+		//make new instance / data baru
 		$customer = new Customer;
 		$customer->customerID = Input::get('customerId');
 		$customer->customerAddress1 = Input::get('firstAddress');
@@ -96,6 +98,7 @@ class CustomerController extends \BaseController {
 		$customer->customerPinBB = Input::get('customerPinBB');
 		$customer->save();
 
+		//redirect
 		return Redirect::to('/customer');
 	}
 
@@ -144,7 +147,12 @@ class CustomerController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//select query
+		$customer = Customer::find($id);
+		//delete customer
+		$customer->delete();
+		//redirect
+		return Redirect::to('/customer');
 	}
 
 

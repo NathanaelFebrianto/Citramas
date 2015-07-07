@@ -18,17 +18,33 @@
 			                <th>Item Set ID</th>
 							<th>Nama Item</th>
 			                <th>Quantity</th>
+			            	<th>Action</th>
 			            </tr>
 			        </thead>
 			 
 			        <tbody>
+			        	<!-- looping for item set start here  -->
 			        	@foreach ($itemsets as $itemset)
 						<tr>
 							<td>{{ $itemset->itemSetID }}</td>
 							<td>{{ $itemset->item->itemDesc }}</td>
 							<td>{{ $itemset->itemQty }}</td>
+							<td>
+
+								<!-- action delete start here -->
+								{{ Form::open(array('style' => 'display:inline;' , 'route' => array('itemset.destroy' , $itemset->itemSetID), 'method' => 'DELETE')) }}
+
+								<button href="" onClick="return confirm('Are you sure want to delete this item set?')" class="btn btn-danger btn-info">
+									<span class="glyphicon glyphicon-remove"></span>Delete
+								</button>
+
+								{{ Form::close() }}
+								<!-- action delete end here -->
+							</td>
+
 						</tr>
 						@endforeach
+						<!-- looping for item set end here -->
 						
 			        </tbody>
 				</table>

@@ -23,7 +23,7 @@ class RegionController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		//generate new id
 		$newId = Region::generateId();
 
 		return View::make('region.new' , ['id' => $newId]);
@@ -37,10 +37,11 @@ class RegionController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
-		$rules = array("regionId" 	=> "required",
-						"regionName" 	=> "required");
+		//rule untuk validasi region
+		$rules = array("regionId" 	=> "required|unique:msregion,regionID|max:12",
+						"regionName" 	=> "required|unique:msregion,regionName");
 
+		//check validasi
 	    $validator = Validator::make(Input::all(), $rules);
 
 	    if ($validator->fails())
@@ -48,10 +49,10 @@ class RegionController extends \BaseController {
 	        return Redirect::to('/region/create')->withErrors($validator);
 	    }
 
-		//
+		//make new instance / data baru
 		$region = new Region;
 		$region->regionID = Input::get('regionId');
-		$region->regionName = Input::get('regionName');
+		$region->regionName = strtoupper(Input::get('regionName'));
 		$region->save();
 		
 		return Redirect::to('/region');
@@ -103,7 +104,12 @@ class RegionController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//select query
+		$region = Region::find($id);
+		//delete data
+		$region->delete();
+		//redirect
+		return Redirect::to('/region');
 	}
 
 

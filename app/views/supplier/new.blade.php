@@ -25,11 +25,12 @@
             {{ Form::open(array('route' => 'supplier.store' , 'method' => 'POST' , 'id' => 'form' , 'class' => 'form-horizontal')) }}
               
 				<fieldset>
-					<!-- Customer ID -->
+					<!-- Supplier ID -->
 					<div class="form-group">
-					  <label class="col-md-4 control-label" for="supplierId">Supplier Id</label>
+					 
+					  <label class="col-md-4 control-label"  for="supplierId">Supplier Id</label>
 					  <div class="col-md-4">
-					    <input name="supplierId" type="text" placeholder="Input Supplier ID" required="" class="form-control input-md">
+					    <input id = "supplierId" name="supplierId" type="text" placeholder = "Input Supplier Id" class="form-control input-md" required = "">
 					  </div>
 					  <div class="col-md-4 text-left">
             				<?php echo $errors->first('supplierId'); ?>
@@ -37,7 +38,7 @@
 					
 					</div>
 
-					<!-- Customer Name -->
+					<!-- Supplier Name -->
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="supplierName">Supplier Name</label>
 					  <div class="col-md-4">
